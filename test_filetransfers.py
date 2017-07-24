@@ -8,7 +8,7 @@ repoPath = "./tmp/testRepo"
 
 class FileTransfersTest(unittest.TestCase):
 
-    def test_requesting_imagefile(self):
+    def Test_requesting_imagefile(self):
         hostImageFile()
         time.sleep(6)
         imname = "http://localhost:8000/tst1.tar"
@@ -16,3 +16,6 @@ class FileTransfersTest(unittest.TestCase):
 
     def Test_hosting_imagefile(self):
         hostImageFile()
+
+    def test_listingImages(self):
+        print getLocalImagesList()

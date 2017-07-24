@@ -7,7 +7,7 @@ def addContainer(r, c):
 
 def getExposedPorts(sid):
 
-    if containersDict.contains_key(sid):
+    if sid in containersDict:
         c = containersDict[sid]
         return c.ports()
 
@@ -15,7 +15,7 @@ def getExposedPorts(sid):
 
 def checkAndStopExistingContainer(sid):
 
-    if containersDict.contains_key(sid):
+    if sid in containersDict:
         c = containersDict[sid]
         c.stop()
 

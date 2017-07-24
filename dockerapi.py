@@ -1,6 +1,6 @@
 import docker
 import os
-
+from filetransfers import *
 
 
 def py_run(op):
@@ -31,9 +31,9 @@ def imageExists(imageName):
     return False
 
 def downloadImage(r):
-    fpath = requestImageFromServer(r["imageUrl"], r["imageName"])
+    fpath = requestImageFromServer(r["imageUrl"], r["image"])
     loadImageFromFile(fpath)
-    assert imageExists(r["imageName"]) == True
+    assert imageExists(r["image"]) == True
 
 def saveImageToFile(imageName, filePath):
     assert imageExists(imageName) == True

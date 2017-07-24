@@ -1,15 +1,25 @@
 import urllib
 import config
 
+import glob, os
 
 def getOutputPath(imName):
-    return "%s/images/%s" % (config.WORK_DIR , imName)
+    return "%s/images/%s.tar" % (config.WORK_DIR , imName)
 
 
 def requestImageFromServer(imageUrl, imageName):
     path = getOutputPath(imageName)
     urllib.urlretrieve (imageUrl, path)
     return path
+
+
+def getLocalImagesList():
+    path = "%s/images/*.tar" % (config.WORK_DIR)
+    outList = []
+    for filee in glob.glob(path):
+        filee = filee.split("/")[-1]
+        outList.append(filee.replace(".tar", ""))
+    return outList
 
 
 #### ### ## FILE SERVER #### ### ##
