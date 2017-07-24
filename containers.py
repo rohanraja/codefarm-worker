@@ -23,7 +23,7 @@ def checkAndDownloadImage(r):
 
     if imageExists(r["image"]):
         return
-    downloadImage(r["image"])
+    downloadImage(r)
 
 
 def setupContainer(r):

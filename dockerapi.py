@@ -30,9 +30,10 @@ def imageExists(imageName):
 
     return False
 
-def downloadImage(imageName):
-    client = docker.from_env()
-    return True
+def downloadImage(r):
+    fpath = requestImageFromServer(r["imageUrl"], r["imageName"])
+    loadImageFromFile(fpath)
+    assert imageExists(r["imageName"]) == True
 
 def saveImageToFile(imageName, filePath):
     assert imageExists(imageName) == True
