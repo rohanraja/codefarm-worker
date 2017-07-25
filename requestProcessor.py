@@ -12,6 +12,9 @@ def getCloneDir(r):
 def processBuildRequest(r):
 
     outPath = getCloneDir(r)
-    cloneBranch(r["repoUrl"], r["branchName"], outPath)
+    if(os.path.exists(outPath)):
+        pullBranch(outPath)
+    else:
+        cloneBranch(r["repoUrl"], r["branchName"], outPath)
     r["localClonedPath"] = os.path.abspath(outPath)
     setupContainer(r)
