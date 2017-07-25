@@ -19,7 +19,7 @@ def py_run(op):
     cont = client.containers.run(
             op["image"],
             command=op["cmd"],
-            publish_all_ports=op["publishPorts"],
+            publish_all_ports=bool(op["publishPorts"]),
             volumes={
                 op["fromPath"]: {'bind': op["toPath"], 'mode': 'rw'}
             },

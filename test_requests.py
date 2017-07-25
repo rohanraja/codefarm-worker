@@ -4,7 +4,6 @@ from requestProcessor import *
 
 testRequest = {
         "sessionId": "testid1",
-        "workspaceId": "wid1",
         "branchName": "master",
         "repoUrl": "https://github.com/rohanraja/samplerails",
         "image": "5aaddb01",

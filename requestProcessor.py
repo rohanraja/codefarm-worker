@@ -11,6 +11,8 @@ def getCloneDir(r):
 
 def processBuildRequest(r):
 
+    print "Processing Build Request %s" % r
+
     outPath = getCloneDir(r)
     if(os.path.exists(outPath)):
         pullBranch(outPath)
