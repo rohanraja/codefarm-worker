@@ -9,6 +9,9 @@ def getOutputPath(imName):
 
 def requestImageFromServer(imageUrl, imageName):
     path = getOutputPath(imageName)
+    if(os.path.exists(path)):
+        return path
+
     urllib.urlretrieve (imageUrl, path)
     return path
 
