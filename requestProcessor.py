@@ -1,6 +1,7 @@
 from gitapi import *
 import os
 import config
+from containers import *
 
 def getCloneDir(r):
 
@@ -12,5 +13,5 @@ def processBuildRequest(r):
 
     outPath = getCloneDir(r)
     cloneBranch(r["repoUrl"], r["branchName"], outPath)
-    r["localClonedPath"] = outPath
+    r["localClonedPath"] = os.path.abspath(outPath)
     setupContainer(r)
