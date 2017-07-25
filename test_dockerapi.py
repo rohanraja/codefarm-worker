@@ -24,7 +24,8 @@ class DockerApiTest(unittest.TestCase):
 
     def test_loading_image(self):
 
-        loadImageFromFile("tmp/tst1.tar")
+        forceRemoteImg("1815")
+        loadImageFromFile("tmp/images/1815.tar")
         assert imageExists("1815") == True
 
 

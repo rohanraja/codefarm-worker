@@ -52,11 +52,19 @@ def saveImageToFile(imageName, filePath):
     f.close()
 
 def loadImageFromFile(filePath):
-    f = open(filePath, 'r')
-    data = f.read()
-    f.close()
-    client = docker.from_env()
-    img = client.images.load(data)
-    return img
+
+    cmd = "docker load -i %s" % filePath
+    os.system(cmd)
+
+def forceRemoteImg(idd):
+    cmd = "docker rmi --force %s" % idd
+    os.system(cmd)
+
+    # f = open(filePath, 'r')
+    # data = f.read()
+    # f.close()
+    # client = docker.from_env()
+    # img = client.images.load(data)
+    # return img
 
 
