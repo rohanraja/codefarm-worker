@@ -1,0 +1,7 @@
+CONT_STOP = "Container Stopped"
+IM_EXISTS = "Docker image found locally"
+IM_DOWNLOAD = "Docker image not found locally, Downloading!"
+CLONING = "Cloning Repository: branch- %s of %s"
+PULLINGBRANCH = "Pulling branch - %s"
+BUILDREQUEST = "Recieved Build Request"
+INIT_DOCKER = "Initializing Docker Container"

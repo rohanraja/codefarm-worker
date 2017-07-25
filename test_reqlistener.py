@@ -14,6 +14,7 @@ testMsg = """{
 "imageUrl": "http://192.168.0.103:8000/5aaddb011231.tar",
 "cmd": "make serve",
 "publishPorts": "True",
+"ports": [3000],
 "srcPath": "/app2"
 }
 }"""
@@ -26,5 +27,5 @@ class ReqListenerTest(unittest.TestCase):
     def Test_message_loop_async(self):
         runRequestLooper(workerId)
 
-    def Test_processing_request(self):
+    def test_processing_request(self):
         processMessage(testMsg)

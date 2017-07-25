@@ -4,7 +4,8 @@ import json
 from requestProcessor import *
 
 processorsDict = {
-        "build": processBuildRequest
+        "build": processBuildRequest,
+        # "stopBuild" : processStopRequest
 }
 
 def getQueueName(workerId):
