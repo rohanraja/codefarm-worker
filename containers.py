@@ -5,13 +5,21 @@ containersDict = {}
 def addContainer(r, c):
     containersDict[r["sessionId"]] = c
 
-def getExposedPorts(sid):
+def getContainer(r):
+    if r["sessionId"] in containersDict:
+        return containersDict[r["sessionId"]]
+    return None
 
-    if sid in containersDict:
-        c = containersDict[sid]
-        return c.ports()
+def getExposedPorts(r):
 
-    return ""
+    outP = {}
+    c = getContainer(r)
+
+    for port in r["ports"]:
+        hostPrt = findHostPort(c.id, port)
+        outP[port] = hostPrt
+
+    return outP
 
 def checkAndStopExistingContainer(sid):
 

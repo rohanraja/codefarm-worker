@@ -17,6 +17,12 @@ def py_run(op):
     )
     return cont
 
+def findHostPort(containerId, privatePort):
+    client = docker.from_env()
+    outP = client.api.port(containerId, privatePort)
+    return outP[0]['HostPort']
+
+
 def dockerRun(runOptions):
     return py_run(runOptions)
 
