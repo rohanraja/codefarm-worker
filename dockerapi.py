@@ -3,9 +3,19 @@ import os
 from filetransfers import *
 
 
+def converToWinDockPath(winPath):
+    outp = winPath.replace("\\", "/")
+    outp = outp.replace(":", "")
+    outp = "//" + outp
+    return outp
+
+
 def py_run(op):
 
     client = docker.from_env()
+    if os.name == 'nt':
+        op["fromPath"] = converToWinDockPath(op["fromPath"])
+
     cont = client.containers.run(
             op["image"],
             command=op["cmd"],

@@ -22,11 +22,14 @@ class DockerApiTest(unittest.TestCase):
 
         saveImageToFile("railwithdeps", "tmp/railswithdeps.tar")
 
-    def test_loading_image(self):
+    def Test_loading_image(self):
 
         forceRemoteImg("1815")
         loadImageFromFile("tmp/images/1815.tar")
         assert imageExists("1815") == True
 
+    def test_winpathConversion(self):
+
+        assert converToWinDockPath("C:\\src\\test") == "//C/src/test"
 
 # docker run -itP -v $(pwd):/app2 railwithdeps make serve
