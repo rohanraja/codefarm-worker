@@ -26,5 +26,5 @@ class ReqListenerTest(unittest.TestCase):
     def Test_message_loop_async(self):
         runRequestLooper(workerId)
 
-    def test_processing_request(self):
+    def Test_processing_request(self):
         processMessage(testMsg)
