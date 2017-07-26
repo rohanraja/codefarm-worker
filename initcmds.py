@@ -1,4 +1,5 @@
 from redisutils import *
+from requestQueuer import *
 
 projects = RedisObj("projects")
 workspaces = RedisObj("workspaces")
@@ -10,20 +11,21 @@ def addProjectInfo(wid, proj):
     projects[wid] = proj
 
 def initDev(ipaddr, projInfo):
-    print "Initializing FARM environment"
+    print "Initializing FARM DEV environment"
 
     ws = workspaces.get(ipaddr, [])
 
     wid = len(ws) + 1
     ws.append(wid)
+    workspaces[ipaddr] = ws
 
     addProjectInfo(wid, projInfo)
 
-    workspaces[ipaddr] = ws
     return wid
 
 
 def initWorker(ipaddr, images):
+    print "Initializing FARM worker"
     updateWorkerImages(ipaddr, images)
 
 def updateWorkerImages(ipaddr, images):
@@ -59,9 +61,10 @@ def createOrGetSession(wid, newSess = False):
 
 
 def requestBuild(wid, branch):
-    print "Requesting FARM to build"
+    print "Requesting FARM to build branch: %s" % branch
 
     projInfo = projects[wid]
+    projInfo["branch"] = branch
     imageId = projInfo["image"]
 
     workerIp, found = selectWorkerMachine(imageId)
@@ -71,6 +74,8 @@ def requestBuild(wid, branch):
         imgUrl = getImageUrl(workerIp, imageId)
 
     sid = createOrGetSession(workerIp)
+
+    statuses[sid] = ["Requesting a worker to build"]
 
     queueBuildRequest(sid, workerIp, projInfo, imgUrl)
 

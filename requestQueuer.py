@@ -1,6 +1,8 @@
 from redisutils import *
 import json
-from requestListener import getQueueName
+
+def getQueueName(workerId):
+    return "worker_%s"%workerId
 
 def queueBuildRequest(sid, wid, proj, imUrl):
 

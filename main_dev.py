@@ -3,17 +3,25 @@ from initcmds import *
 
 from machineHelpers import *
 
-cmdDict = {
-        "initRepo": initRepo
-}
-
 def initRepo():
     myIp = getLocalIP()
     projInfo = getProjInfo()
-    initDev(myIp, projInfo)
+    wid = initDev(myIp, projInfo)
+    setWorkspaceId(str(wid))
+
+
+def build():
+
+    branch = getWorkingBranch()
+    wid = getWorkspaceId()
+    requestBuild(wid, branch)
 
 
 
+cmdDict = {
+        "initRepo": initRepo,
+        "build": build
+}
 
 
 cmdDict[sys.argv[1]]()
