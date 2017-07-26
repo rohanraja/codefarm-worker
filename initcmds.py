@@ -13,14 +13,15 @@ def addProjectInfo(wid, proj):
 def initDev(ipaddr, projInfo):
     print "Initializing FARM DEV environment"
 
+    # import pdb; pdb.set_trace()
     ws = workspaces.get(ipaddr, [])
 
     wid = len(ws) + 1
     ws.append(wid)
-    workspaces[ipaddr] = ws
 
     addProjectInfo(wid, projInfo)
 
+    workspaces[ipaddr] = ws
     return wid
 
 

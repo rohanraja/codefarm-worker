@@ -49,6 +49,7 @@ class RedisObj:
             strInp = redis.get(self.key)
             self.dict = json.loads(strInp)
         except:
+            self.dict = {}
             pass
 
     def merge(self, otherDict):
