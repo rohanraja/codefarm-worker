@@ -4,6 +4,7 @@ import time
 import config
 import threading
 from servercomm import *
+from initcmds import statuses
 
 statusDict = {}
 containersDict = {}
@@ -29,8 +30,7 @@ def getContainer(r):
 
 
 def sendStatusDictToServer(stadict, wid):
-
-    sendServerMsg("statusUpdate", wid, stadict)
+    statuses.merge(stadict)
 
 
 

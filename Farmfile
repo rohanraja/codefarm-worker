@@ -1,0 +1,11 @@
+{
+"sessionId": "testid1",
+"branchName": "master",
+"repoUrl": "https://github.com/rohanraja/samplerails",
+"image": "5aaddb01",
+"imageUrl": "http://192.168.0.103:8000/5aaddb011231.tar",
+"cmd": "make serve",
+"publishPorts": "True",
+"ports": [3000],
+"srcPath": "/app2"
+}
