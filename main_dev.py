@@ -35,4 +35,5 @@ cmdDict = {
 }
 
 
-cmdDict[sys.argv[1]]()
+if __name__ == "__main__":
+    cmdDict[sys.argv[1]]()

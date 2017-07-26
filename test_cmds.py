@@ -1,17 +1,18 @@
 import unittest
-from redisutils import *
-from initcmds import *
+from main_dev import *
+from main_worker import *
+import time
+import os
 
+class SystemFullTest(unittest.TestCase):
 
-class RedisCMDSTest(unittest.TestCase):
-
-    def Test_init_worker(self):
-
-        initWorker("192.168.0.100", ["1815", "5aa"])
-
-    def test_get_status(self):
-
-        stat = getSessionStats("testid1")
-        print stat
-
+    def test_initiating_machines_and_building(self):
+        os.system("./stopAll.sh")
+        init()
+        initRepo()
+        build()
+        runDaemon()
+        for i in range(10):
+            status()
+            time.sleep(1)
 
