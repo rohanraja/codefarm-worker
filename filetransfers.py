@@ -34,6 +34,7 @@ import threading
 
 def blockingServer():
 
+    print "Starting Image File Server"
     cmd = ("cd %s/images; python -m SimpleHTTPServer" % (config.WORK_DIR))
     os.system(cmd)
 

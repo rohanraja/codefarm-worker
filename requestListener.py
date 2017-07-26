@@ -18,6 +18,7 @@ def processMessage(msg):
 
 def requestLoop(workerId):
 
+    print "Starting request listener loop"
     qName = getQueueName(workerId)
 
     while True:

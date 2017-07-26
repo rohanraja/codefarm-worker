@@ -2,7 +2,7 @@ import os, sys
 from initcmds import *
 
 from machineHelpers import *
-from filetransfers import getLocalImagesList
+from filetransfers import getLocalImagesList, hostImageFile
 from requestListener import runRequestLooper
 
 def init():
@@ -15,6 +15,7 @@ def runDaemon():
     
     myIp = getLocalIP()
     runRequestLooper(myIp)
+    hostImageFile()
 
 
 cmdDict = {

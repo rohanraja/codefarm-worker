@@ -1,6 +1,7 @@
 import docker
 import os
 from filetransfers import *
+from sessionsManager import updateStatus
 
 
 def converToWinDockPath(winPath):
@@ -48,6 +49,7 @@ def imageExists(imageName):
 
 def downloadImage(r):
     fpath = requestImageFromServer(r["imageUrl"], r["image"])
+    updateStatus(r, "Loading docker image from tar file: %s" % fpath )
     loadImageFromFile(fpath)
     assert imageExists(r["image"]) == True
 
