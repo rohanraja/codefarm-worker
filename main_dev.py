@@ -14,13 +14,24 @@ def build():
 
     branch = getWorkingBranch()
     wid = getWorkspaceId()
-    requestBuild(wid, branch)
+    sid = requestBuild(wid, branch)
+    setActiveSession(sid)
 
+
+def printStats(stats):
+    for st in stats:
+        print "%s\n" % st
+
+def status():
+    sid = getActiveSession()
+    stats = getSessionStats(sid)
+    printStats(stats)
 
 
 cmdDict = {
         "initRepo": initRepo,
-        "build": build
+        "build": build,
+        "status": status,
 }
 
 

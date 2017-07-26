@@ -54,7 +54,7 @@ def createOrGetSession(wid, newSess = False):
     if len(sess) > 0 and newSess == False:
         return sess[-1]
     
-    sid = len(sess) + 1
+    sid = str(len(sess) + 1)
     sess.append(sid)
     sessions[wid] = sess
     
@@ -79,6 +79,8 @@ def requestBuild(wid, branch):
     statuses[sid] = ["Requesting a worker to build"]
 
     queueBuildRequest(sid, workerIp, projInfo, imgUrl)
+
+    return (sid)
 
 
 

@@ -19,16 +19,37 @@ def getProjInfo():
     fdict = json.loads(conts)
     return fdict
 
-def getWorkspaceId():
-    f = open(config.LOCALCONFIG, 'r')
-    wid = f.read()
+def getLocalConfig():
+    try:
+        f = open(config.LOCALCONFIG, 'r')
+        conts = f.read()
+        f.close()
+        confg = json.loads(conts)
+        return confg
+    except:
+        return {}
+
+def saveConfig(c):
+    strData = json.dumps(c)
+    f = open(config.LOCALCONFIG, 'w')
+    f.write(strData)
     f.close()
-    return wid
+
+def getWorkspaceId():
+    return getLocalConfig()["workspaceId"]
+
+def getActiveSession():
+    return getLocalConfig()["activeSession"]
+
+def setActiveSession(sid):
+    c = getLocalConfig()
+    c["activeSession"] = sid
+    saveConfig(c)
 
 def setWorkspaceId(wid):
-    f = open(config.LOCALCONFIG, 'w')
-    f.write(wid)
-    f.close()
+    c = getLocalConfig()
+    c["workspaceId"] = wid
+    saveConfig(c)
 
 def getWorkingBranch():
     r = Repo(".")

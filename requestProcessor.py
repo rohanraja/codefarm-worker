@@ -4,6 +4,7 @@ import config
 from containers import *
 from sessionsManager import *
 import statuses as st
+import machineHelpers
 
 def getCloneDir(r):
 
@@ -16,7 +17,7 @@ def processBuildRequest(r):
     print "Processing Build Request %s" % r
 
     updateStatus(r, st.BUILDREQUEST)
-    invokeStatusDispatcher(config.WORKER_ID)
+    invokeStatusDispatcher(machineHelpers.getLocalIP())
 
     outPath = getCloneDir(r)
     if(os.path.exists(outPath)):

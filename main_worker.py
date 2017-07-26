@@ -3,6 +3,7 @@ from initcmds import *
 
 from machineHelpers import *
 from filetransfers import getLocalImagesList
+from requestListener import runRequestLooper
 
 def init():
     myIp = getLocalIP()
@@ -10,10 +11,15 @@ def init():
     initWorker(myIp, images)
 
 
+def runDaemon():
+    
+    myIp = getLocalIP()
+    runRequestLooper(myIp)
 
 
 cmdDict = {
         "init": init,
+        "run": runDaemon,
 }
 
 
